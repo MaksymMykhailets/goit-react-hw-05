@@ -22,7 +22,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>Trending Movies</h1>
-      {error && <p>{error}</p>}
+      {error && <p>Failed to fetch trending movies</p>}
       <MovieList movies={movies} />
     </div>
   );

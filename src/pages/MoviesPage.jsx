@@ -17,6 +17,7 @@ const MoviesPage = () => {
       try {
         const data = await searchMovies(query);
         setMovies(data);
+        setError(false);
       } catch (error) {
         setError(true);
       }
