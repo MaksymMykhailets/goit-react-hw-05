@@ -8,3 +8,10 @@ export const fetchTrendingMovies = async () => {
   const { data } = await axios.get('/trending/movie/day');
   return data.results;
 };
+
+export const searchMovies = async query => {
+  const { data } = await axios.get('/search/movie', {
+    params: { query },
+  });
+  return data.results;
+};
