@@ -53,10 +53,14 @@ const MovieDetailsPage = () => {
           <p>{movie.overview}</p>
           <h2>Genres</h2>
           <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
-          {/* <nav>
-            <Link to="cast">Cast</Link>
-            <Link to="reviews">Reviews</Link>
-          </nav> */}
+          <nav>
+            <Link to="cast" state={{ from: backLocation }}>
+              Cast
+            </Link>
+            <Link to="reviews" state={{ from: backLocation }}>
+              Reviews
+            </Link>
+          </nav>
           <Outlet />
         </>
       )}

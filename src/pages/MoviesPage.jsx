@@ -41,7 +41,7 @@ const MoviesPage = () => {
     <div>
       <h1>Search Movies</h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="query" autoComplete="off" autoFocus />
+        <input type="text" name="query" defaultValue={query} />
         <button type="submit">Search</button>
       </form>
       {error && <p>Failed to fetch movies</p>}
