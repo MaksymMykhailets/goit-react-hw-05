@@ -1,0 +1,26 @@
+.btn {
+  display: inline-flex;
+  padding: 5px;
+  color: white;
+  background-color: red;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 13px;
+}
+.btn:hover {
+  background-color: #ccc;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  gap: 15px;
+}
+
+.link {
+  font-weight: 600;
+}
+.isActive {
+  text-decoration: underline;
+  color: red;
+}

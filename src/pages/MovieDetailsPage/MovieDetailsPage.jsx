@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { fetchMovieDetails } from '../api/api';
+import { useParams, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { fetchMovieDetails } from '../../api/api';
 import toast, { Toaster } from 'react-hot-toast';
+import styles from './MovieDetailsPage.module.css';
+import clsx from 'clsx';
 
+const getClassNames = ({ isActive }) => {
+  return clsx(styles.link, isActive && styles.isActive);
+};
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
@@ -39,7 +44,9 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <Link to={backLocation}>Back</Link>
+      <NavLink className={styles.btn} to={backLocation}>
+        Go Back
+      </NavLink>
       {isLoading && <p>Loading...</p>}
       {error && <p>Failed to fetch movie details</p>}
       {movie && (
@@ -53,13 +60,21 @@ const MovieDetailsPage = () => {
           <p>{movie.overview}</p>
           <h2>Genres</h2>
           <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
-          <nav>
-            <Link to="cast" state={{ from: backLocation }}>
+          <nav className={styles.nav}>
+            <NavLink
+              className={getClassNames}
+              to="cast"
+              state={{ from: backLocation }}
+            >
               Cast
-            </Link>
-            <Link to="reviews" state={{ from: backLocation }}>
+            </NavLink>
+            <NavLink
+              className={getClassNames}
+              to="reviews"
+              state={{ from: backLocation }}
+            >
               Reviews
-            </Link>
+            </NavLink>
           </nav>
           <Outlet />
         </>

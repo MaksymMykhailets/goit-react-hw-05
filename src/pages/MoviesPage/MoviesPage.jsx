@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import MovieList from '../components/MovieList/MovieList';
-import { searchMovies } from '../api/api';
+import MovieList from '../../components/MovieList/MovieList';
+import { searchMovies } from '../../api/api';
 import toast, { Toaster } from 'react-hot-toast';
+import styles from './MoviesPage.module.css';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -40,9 +41,16 @@ const MoviesPage = () => {
   return (
     <div>
       <h1>Search Movies</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="query" defaultValue={query} />
-        <button type="submit">Search</button>
+      <form onSubmit={handleSubmit} className={styles.searchForm}>
+        <input
+          type="text"
+          name="query"
+          defaultValue={query}
+          className={styles.searchInput}
+        />
+        <button type="submit" className={styles.searchButton}>
+          Search
+        </button>
       </form>
       {error && <p>Failed to fetch movies</p>}
       {!error && movies.length === 0 && query && <p>No movies found</p>}
